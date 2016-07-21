@@ -17,4 +17,21 @@ EOS
     formatter = LogAnalytics::UniqueViewFormatter.new
     expect { parser.report(formatter) }.to output(expected).to_stdout
   end
+
+  it 'reports the number of visits for each path' do
+    log_file = File.dirname(__FILE__) + '/fixtures/webserver.log'
+    expected = <<-EOS
+/about/2 90 visits
+/contact 89 visits
+/index 82 visits
+/about 81 visits
+/help_page/1 80 visits
+/home 78 visits
+EOS
+
+    parser = LogAnalytics::Parser.new(log_file)
+
+    formatter = LogAnalytics::VisitCountFormatter.new
+    expect { parser.report(formatter) }.to output(expected).to_stdout
+  end
 end
