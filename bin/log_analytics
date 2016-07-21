@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'log_analytics'
+
+if ARGV.empty?
+  puts 'Please provide a log file'
+  exit
+end
+
+puts "\nUnique views\n"
+
+parser = LogAnalytics::Parser.new(ARGV[0])
+unique_views = LogAnalytics::UniqueViewFormatter.new
+parser.report(unique_views)
+
+puts "\nVisits count\n"
+
+visit_count = LogAnalytics::VisitCountFormatter.new
+parser.report(visit_count)
