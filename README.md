@@ -1,5 +1,8 @@
 # Web log analytics
 
+## Requirements
+
+```
 a. Receives a log as argument (webserver.log is provided)
   e.g.: ./parser.rb webserver.log
 
@@ -15,6 +18,7 @@ b. Returns the following:
          /about/2   8 unique views
          /index     5 unique views
          etc...
+```
 
 ## Usage
 
